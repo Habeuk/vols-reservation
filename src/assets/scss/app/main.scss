@@ -1,0 +1,27 @@
+@use '../app/variables.scss' as *;
+@use '@stephane888/wbu-atomique/scss/atome/typography/_default.scss';
+// il ne faut pas charger bootstrap,car il va aloudir l'application et bootstrap est deja sur le site.
+@use '../primevue/main.scss';
+@use '@stephane888/wbu-atomique/scss/bootstrap-all.scss';
+
+//import prime;
+// ce fichier fait pres de 800Ko.
+// @use 'primeicons/primeicons.css';
+// import custom style
+.bg-gray-lg {
+    background-color: #f0f0f0;
+}
+
+.custom-primary-btn {
+    background-image: linear-gradient(90deg, $wbu-color-primary, rgba(244, 159, 29, 0));
+    transition: all .15s ease-in;
+
+    &:hover {
+        background-position: calc(-50% - 1px);
+        background-size: calc(300% + 2px);
+    }
+}
+
+.main-app-container {
+    max-width: 400px;
+}
