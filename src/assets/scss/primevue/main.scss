@@ -10,3 +10,45 @@
 // $highlightFocusBg: #E0E7FF !default;
 
 @import 'primevue-sass-theme/themes/lara/lara-light/indigo/theme.scss';
+
+.p-selectbutton {
+    .p-component.p-button {
+        font-size: calc($fontSize - 4px);
+        padding-bottom: 3px;
+        background-color: transparent;
+        border: none;
+        color: $disabledTextColor;
+        overflow: unset;
+        &::before {
+            content: '';
+            position: absolute;
+            width: 75%;
+            height: 2px;
+            background-color: transparent;
+            bottom: -6px;
+            left: 0;
+            right: 0;
+            margin-inline: auto;
+            transition: all 0.15s ease-in;
+        }
+        &:focus {
+            box-shadow: none;
+            outline: none;
+            &:hover {
+                background-color: transparent;
+            }
+        }
+        &.p-highlight {
+            color: black;
+            position: relative;
+            box-shadow: none;
+            &::before {
+                background-color: $primaryColor;
+                transform: translateY(-100%);
+            }
+            &:hover {
+                background-color: transparent;
+            }
+        }
+    }
+}
