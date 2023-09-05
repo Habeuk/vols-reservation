@@ -19,6 +19,7 @@
         border: none;
         color: $disabledTextColor;
         overflow: unset;
+
         &::before {
             content: '';
             position: absolute;
@@ -31,23 +32,47 @@
             margin-inline: auto;
             transition: all 0.15s ease-in;
         }
+
         &:focus {
             box-shadow: none;
             outline: none;
+
             &:hover {
                 background-color: transparent;
             }
         }
+
         &.p-highlight {
             color: black;
             position: relative;
             box-shadow: none;
+
             &::before {
                 background-color: $primaryColor;
                 transform: translateY(-100%);
             }
+
             &:hover {
                 background-color: transparent;
+            }
+        }
+    }
+}
+
+.p-input-icon-left {
+    .p-inputwrapper {
+        input.p-inputtext {
+            padding-left: 40px;
+        }
+    }
+}
+
+.main-app-form {
+    .form-places-selector {
+
+        .switch-btn {
+            &:hover {
+                border: 1px solid $primaryColor;
             }
         }
     }

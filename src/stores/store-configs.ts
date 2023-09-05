@@ -1,8 +1,26 @@
+export const flyClasses = [
+  {
+    label: 'Économique',
+    value:0
+  },
+  {
+    label: 'Éco premium',
+    value: 1
+  },
+  {
+    label: 'Business',
+    value: 2
+  },
+  {
+    label:'Première',
+    value: 3
+  }  
+]
+export const maxPassager = 9
 export const mainPlace = {
   value: 'Lome, Togo',
   editable: false
 }
-export const flyClass = ['Économique', 'Éco premium', 'Business', 'Première']
 export const flyType = [
   {
     label: 'Aller-retour',
@@ -14,11 +32,32 @@ export const flyType = [
   }
 ]
 export const placeHolders = {
-  from: 'de',
+  from: 'De',
   to: 'À',
   start: 'Du',
   end: 'Au',
-  callToAction: 'Reserver'
+  callToAction: 'RECHERCHER'
 }
 
-export const listPlaces = ['BSS', 'place 2', 'place 3', 'place 5']
+export const listPlaces = [
+  {
+    label: 'BSS',
+    id: 0
+  },
+  {
+    label: 'place 1',
+    id: 1
+  },
+  {
+    label: 'place 2',
+    id:2
+  },
+  {
+    label: 'place 3',
+    id: 3
+  },
+  {
+    label :'place 5',
+    id: 4
+  }
+]

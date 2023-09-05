@@ -1,6 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { flyClass, flyType, listPlaces } from './store-configs'
+import { flyClasses, flyType, listPlaces, maxPassager, placeHolders } from './store-configs'
 
 export const useVolStore = defineStore('vol', () => {
   const valueToComplete = ref('')
@@ -8,29 +8,47 @@ export const useVolStore = defineStore('vol', () => {
   const journeyType = ref(flyType[0])
   const dateDepart = ref(new Date())
   const dateRetour = ref<Date | undefined>()
-  const myflyClass = ref(flyClass[0])
-  const provenance = ref({
-    label: 'Lome, Togo',
-    index: 0
-  })
-  const passagers = ref({
-    adults: 2,
-    childs: 0,
-    baby: 0
-  })
-  const destination = ref({
-    label: 'DSS',
-    index: 0
-  })
-  //getters
-  const getSuggestion = (event: Event) => {
-    console.log(event)
-    valueToComplete.value = valueToComplete.value.trim()
-    if (!valueToComplete.value) {
-      return []
-    }
-    return placeList.value.map((place) => place.includes(valueToComplete.value))
+  const myflyClass = ref(flyClasses[0])
+  const provenance = ref<{label: string, id: number}>()
+  const destination = ref<{label: string, id: number}>()
+  const placeholders = ref(placeHolders)
+  const passagers = ref([
+    {number: 2, label: "adultes", description: "12+", min: 1},
+    {number: 0, label: "enfants", description: "2-11", min: 0},
+    {number: 0, label: "adultes", description: "12+", min: 0},
+  ])
+  
+  
+  //Actions
+  const passagersCount = ()=> {
+    let passagerNumber = 0
+    passagers.value.forEach((element)=>{
+      passagerNumber += element.number
+    })
+    return passagerNumber;
   }
+
+
+  //getters
+  const getSuggestion = computed(() => {
+    valueToComplete.value = valueToComplete.value.trim()
+    const newFilters:Array<any> = []
+    if (!valueToComplete.value) {
+      return newFilters
+    }
+    return placeList.value.filter((place) => place!=provenance.value && place!= destination.value &&place.label.includes(valueToComplete.value))
+  })
+  const getpassagersCount = computed(()=>{
+    return passagersCount()
+  })
+  const getPassagerLeft = computed(()=>{
+    let passagerNumber = 0;
+    passagers.value.forEach((element)=>{
+      passagerNumber += element.number
+    })
+    return maxPassager - passagerNumber;
+  })
+
   return {
     journeyType,
     dateDepart,
@@ -40,6 +58,10 @@ export const useVolStore = defineStore('vol', () => {
     passagers,
     destination,
     valueToComplete,
+    placeList,
+    placeholders,
+    getPassagerLeft,
+    getpassagersCount,
     getSuggestion
   }
 })
