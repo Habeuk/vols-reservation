@@ -46,6 +46,7 @@
             color: black;
             position: relative;
             box-shadow: none;
+            background-color: transparent;
 
             &::before {
                 background-color: $primaryColor;
@@ -54,6 +55,7 @@
 
             &:hover {
                 background-color: transparent;
+                color: black;
             }
         }
     }

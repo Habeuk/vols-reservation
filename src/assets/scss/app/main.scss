@@ -29,31 +29,33 @@
     }
 }
 
-.main-app-container {
-    max-width: 400px;
+.fly-booking {
+    .main-app-container {
+        max-width: 400px;
 
-    .input-svg-icon {
-        &>svg {
-            height: 100%;
-            width: auto;
-            transform: scale(1, 1);
+        .input-svg-icon {
+            &>svg {
+                height: 100%;
+                width: auto;
+                // transform: scale(1, 1);
+            }
         }
-    }
 
-    .journey-type-section {
-        max-width: 80%;
-        display: flex;
+        .journey-type-section {
+            max-width: 80%;
+            display: flex;
 
-        &>* {
-            flex: auto;
+            &>* {
+                flex: auto;
+            }
         }
-    }
 
-    .form-dates-selector {
-        .p-button {
+        .form-dates-selector {
+            .p-button {
 
-            &.p-button-icon-only {
-                padding-block: 0px;
+                &.p-button-icon-only {
+                    padding-block: 0px;
+                }
             }
         }
     }
